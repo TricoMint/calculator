@@ -1,0 +1,32 @@
+body {
+    display: flex;
+    /*justify-content: center;*/
+    background-color: rgb(51, 107, 156);
+}
+
+#container {
+    border: 2px solid black;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px black;
+    display: flex;
+    justify-content: center;
+    height: 600px;
+    width: 500px;
+    background-color: rgb(238, 144, 36);
+}
+
+#readout {
+    border: 2px solid black;
+    border-radius: 20px;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    text-align: center;
+    padding-right: 20px;
+    font-size: 50px;
+    opacity: 0.8;
+    margin-top: 50px;
+    height: 100px;
+    width: 400px;
+    background-color: white;
+}
