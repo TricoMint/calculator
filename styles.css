@@ -53,10 +53,17 @@ body {
     height: 70px;
     width: 80px;
     border-radius: 50px;
+    background-color: rgb(255, 166, 0);
+}
+
+.numbers:active {
+    background-color: rgb(33, 16, 185);
 }
 
 #operations {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     height: 100px;
     width: 220px;
     margin: 10px;
@@ -64,6 +71,7 @@ body {
 }
 
 .operator {
+    background-color: olivedrab;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,4 +81,26 @@ body {
     height: 40px;
     width: 45px;
     font-size: 30px;
+}
+
+.operator:active {
+    background-color: rgb(33, 16, 185)
+}
+
+.results {
+    background-color: rgb(72, 255, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    border: 2px solid black;
+    border-radius: 30px;
+    height: 40px;
+    width: 75px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.results:active {
+    background-color: rgb(33, 16, 185)
 }
