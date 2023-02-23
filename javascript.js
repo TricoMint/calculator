@@ -1,28 +1,8 @@
-let display ="";
+// Variable Declaration Area
 
-function add(num, num2) {
-    let add;
-    add = num + num2;
-    return add
-}
-
-function subtract(num, num2) {
-    let subtract;
-    subtract = num - num2;
-    return subtract
-}
-
-function multiply(num, num2) {
-    let multiply;
-    multiply = num * num2;
-    return multiply;
-}
-
-function divide(num, num2) {
-    let divide;
-    divide = (num / num2);
-    return divide;
-}
+let display = "";
+let newDisplay = "";
+let placeholder = 0;
 
 const zero = document.getElementById("zero");
 zero.addEventListener('click', displayValueZero);
@@ -44,6 +24,35 @@ const eight = document.getElementById("eight");
 eight.addEventListener('click', displayValueEight);
 const nine = document.getElementById("nine");
 nine.addEventListener('click', displayValueNine);
+const addition = document.getElementById("add");
+addition.addEventListener('click', add);
+
+//Function declaration area
+
+function add() {
+    let nonnum = Number(display);
+    placeholder = nonnum + placeholder;
+    display = newDisplay;
+    return placeholder
+}
+
+function subtract(num, num2) {
+    let subtract;
+    subtract = num - num2;
+    return subtract
+}
+
+function multiply(num, num2) {
+    let multiply;
+    multiply = num * num2;
+    return multiply;
+}
+
+function divide(num, num2) {
+    let divide;
+    divide = (num / num2);
+    return divide;
+}
 
 function displayValueZero() {
     if(display == 0) {return display};
