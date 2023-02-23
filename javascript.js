@@ -2,8 +2,9 @@
 
 let display = "";
 let newDisplay = "";
-let placeholder = 0;
-let hidden = 0;
+let placeholder;
+let nonnum;
+let lastoperator;
 
 const readout = document.getElementById("readout");
 
@@ -29,26 +30,43 @@ const nine = document.getElementById("nine");
 nine.addEventListener('click', displayValueNine);
 const added = document.getElementById("add");
 added.addEventListener('click', add);
+const subtracted = document.getElementById("subtract");
+subtracted.addEventListener('click', subtract)
 const equaled = document.getElementById("equals");
 equaled.addEventListener('click', equals);
 
 //Function declaration area
 
 function equals() {
-return readout.innerText = placeholder + Number(display);
+    if (lastoperator == "add"){
+        console.log(placeholder);
+        console.log(display);
+        return readout.innerText = placeholder + Number(display)}
+    
+    if (lastoperator == "subtract") {
+        console.log(placeholder);
+        console.log(display);
+        return readout.innerText = placeholder - Number(display)
+    }    
 }
+
+let test = 0;
 
 function add() {
-    let nonnum = Number(display);
-    placeholder = nonnum + placeholder;
+    placeholder = placeholder + test;
+    readout.innerText = placeholder;
+    test = placeholder;
     display = newDisplay;
-    return placeholder
+    lastoperator = "add";
 }
 
-function subtract(num, num2) {
-    let subtract;
-    subtract = num - num2;
-    return subtract
+function subtract() {
+    displayNum = Number(display);
+    placeholder = placeholder - displayNum;
+    readout.innerText = placeholder;
+    display = newDisplay;
+    lastoperator = "subtract"
+    return placeholder
 }
 
 function multiply(num, num2) {
@@ -73,6 +91,7 @@ function displayValueZero() {
 function displayValueOne() {
     display = display + 1;
     readout.innerText = display;
+    placeholder = Number(display);
     return display
 }
 
