@@ -3,6 +3,9 @@
 let display = "";
 let newDisplay = "";
 let placeholder = 0;
+let hidden = 0;
+
+const readout = document.getElementById("readout");
 
 const zero = document.getElementById("zero");
 zero.addEventListener('click', displayValueZero);
@@ -24,10 +27,16 @@ const eight = document.getElementById("eight");
 eight.addEventListener('click', displayValueEight);
 const nine = document.getElementById("nine");
 nine.addEventListener('click', displayValueNine);
-const addition = document.getElementById("add");
-addition.addEventListener('click', add);
+const added = document.getElementById("add");
+added.addEventListener('click', add);
+const equaled = document.getElementById("equals");
+equaled.addEventListener('click', equals);
 
 //Function declaration area
+
+function equals() {
+return readout.innerText = placeholder + Number(display);
+}
 
 function add() {
     let nonnum = Number(display);
@@ -57,60 +66,60 @@ function divide(num, num2) {
 function displayValueZero() {
     if(display == 0) {return display};
     display = display + 0;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
 
 function displayValueOne() {
     display = display + 1;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
 
 function displayValueTwo() {
     display = display + 2;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
 
 function displayValueThree() {
     display = display + 3;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
 
 function displayValueFour() {
     display = display + 4;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
 
 function displayValueFive() {
     display = display + 5;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
 
 function displayValueSix() {
     display = display + 6;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
 
 function displayValueSeven() {
     display = display + 7;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
 
 function displayValueEight() {
     display = display + 8;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
 
 function displayValueNine() {
     display = display + 9;
-    document.getElementById("readout").innerText = display;
+    readout.innerText = display;
     return display
 }
