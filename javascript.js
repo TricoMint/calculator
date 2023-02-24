@@ -4,7 +4,7 @@ let display = "";
 let newDisplay = "";
 let placeholder;
 let nonnum;
-let lastoperator;
+let lastoperator = "none";
 
 const readout = document.getElementById("readout");
 
@@ -53,20 +53,22 @@ function equals() {
 let test = 0;
 
 function add() {
+    placeholder = Number(display);
+    readout.innerText = placeholder + test;
     placeholder = placeholder + test;
-    readout.innerText = placeholder;
     test = placeholder;
     display = newDisplay;
     lastoperator = "add";
 }
 
 function subtract() {
-    displayNum = Number(display);
-    placeholder = placeholder - displayNum;
-    readout.innerText = placeholder;
+    placeholder = Number(display);
+    if(lastoperator == "none") {test = placeholder * 2};
+    readout.innerText = test - placeholder;
+    placeholder = test - placeholder;
+    test = placeholder;
     display = newDisplay;
-    lastoperator = "subtract"
-    return placeholder
+    lastoperator = "subtract";
 }
 
 function multiply(num, num2) {
@@ -91,7 +93,6 @@ function displayValueZero() {
 function displayValueOne() {
     display = display + 1;
     readout.innerText = display;
-    placeholder = Number(display);
     return display
 }
 
