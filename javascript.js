@@ -39,34 +39,38 @@ equaled.addEventListener('click', equals);
 
 function equals() {
     if (lastoperator == "add"){
-        console.log(placeholder);
-        console.log(display);
-        return readout.innerText = placeholder + Number(display)}
+        readout.innerText = storage + Number(display)}
     
     if (lastoperator == "subtract") {
-        console.log(placeholder);
-        console.log(display);
-        return readout.innerText = placeholder - Number(display)
+        return readout.innerText = storage - Number(display)
     }    
 }
 
 let test = 0;
 
+let storage = 0;
+
 function add() {
-    placeholder = Number(display);
+    /*placeholder = Number(display);
     readout.innerText = placeholder + test;
     placeholder = placeholder + test;
     test = placeholder;
+    display = newDisplay;
+    lastoperator = "add";*/
+
+    placeholder = Number(display);
+    storage = placeholder + storage;
+    readout.innerText = storage;
+    console.log(storage);
     display = newDisplay;
     lastoperator = "add";
 }
 
 function subtract() {
     placeholder = Number(display);
-    if(lastoperator == "none") {test = placeholder * 2};
-    readout.innerText = test - placeholder;
-    placeholder = test - placeholder;
-    test = placeholder;
+    if(lastoperator == "none") {storage = placeholder * 2};
+    readout.innerText = storage;
+    console.log(storage);
     display = newDisplay;
     lastoperator = "subtract";
 }
