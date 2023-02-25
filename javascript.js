@@ -2,8 +2,6 @@
 
 let display = "";
 let newDisplay = "";
-let placeholder;
-let nonnum;
 let lastoperator = "none";
 
 const readout = document.getElementById("readout");
@@ -37,113 +35,149 @@ equaled.addEventListener('click', equals);
 
 //Function declaration area
 
-function equals() {
-    if (lastoperator == "add"){
-        readout.innerText = storage + Number(display)}
-    
-    if (lastoperator == "subtract") {
-        return readout.innerText = storage - Number(display)
-    }    
+
+let num1 = 0;
+let num2 = 0;
+let storage;
+
+function equals(){
+    if(lastoperator == "add") {
+        readout.innerText = num1 + num2;}
+    if(lastoperator == "subtract"){
+        readout.innerText = num2 - Number(display);
+    }
 }
+
+function add(){
+    if (lastoperator == "subtract") {
+        readout.innerText = num2 - num1;
+        num2 = num2 - num1;
+        display = newDisplay;
+        return lastoperator = "add";
+    }
+    readout.innerText = num1 + num2;
+    num2 = num1 + num2;
+    display = newDisplay;
+    lastoperator = "add";
+    console.log(num1);
+    console.log(num2);
+}
+
+
+
+function subtract(){
+    if(num2 == 0) {num2 = num1 * 2};
+    if (lastoperator == "add") {
+        readout.innerText = num2 + num1;
+        num2 = num2 + num1;
+        display = newDisplay;
+        return lastoperator = "subtract"
+    }
+    readout.innerText = num2 - num1;
+    num2 = num2 - num1;
+    display = newDisplay;
+    lastoperator = "subtract";
+    console.log(num1);
+    console.log(num2);
+}
+
+/*function equals() {
+    if (lastoperator == "add"){
+        readout.innerText = storage + Number(display);
+        console.log(storage)
+        console.log(placeholder)
+        storage = Number(display)
+        placeholder = 0}
+    if (lastoperator == "subtract") {
+        readout.innerText = storage - Number(display);
+        console.log(storage)
+        console.log(placeholder)
+    }    
+} 
 
 let test = 0;
 
-let storage = 0;
+let storage = 0; */
 
-function add() {
-    /*placeholder = Number(display);
-    readout.innerText = placeholder + test;
-    placeholder = placeholder + test;
-    test = placeholder;
-    display = newDisplay;
-    lastoperator = "add";*/
-
+/*function add() {
     placeholder = Number(display);
     storage = placeholder + storage;
     readout.innerText = storage;
     console.log(storage);
+    
     display = newDisplay;
     lastoperator = "add";
-}
+}*/
 
-function subtract() {
+/*function subtract() {
     placeholder = Number(display);
     if(lastoperator == "none") {storage = placeholder * 2};
+    storage = storage - placeholder;
     readout.innerText = storage;
     console.log(storage);
     display = newDisplay;
     lastoperator = "subtract";
-}
+} */
 
 function multiply(num, num2) {
     let multiply;
     multiply = num * num2;
-    return multiply;
 }
 
 function divide(num, num2) {
     let divide;
     divide = (num / num2);
-    return divide;
 }
 
 function displayValueZero() {
     if(display == 0) {return display};
     display = display + 0;
     readout.innerText = display;
-    return display
 }
 
 function displayValueOne() {
     display = display + 1;
+    num1 = Number(display);
     readout.innerText = display;
-    return display
 }
 
 function displayValueTwo() {
     display = display + 2;
+    num1 = Number(display);
     readout.innerText = display;
-    return display
 }
 
 function displayValueThree() {
     display = display + 3;
     readout.innerText = display;
-    return display
 }
 
 function displayValueFour() {
     display = display + 4;
     readout.innerText = display;
-    return display
 }
 
 function displayValueFive() {
     display = display + 5;
     readout.innerText = display;
-    return display
 }
 
 function displayValueSix() {
     display = display + 6;
     readout.innerText = display;
-    return display
 }
 
 function displayValueSeven() {
     display = display + 7;
     readout.innerText = display;
-    return display
 }
 
 function displayValueEight() {
     display = display + 8;
     readout.innerText = display;
-    return display
 }
 
 function displayValueNine() {
     display = display + 9;
     readout.innerText = display;
-    return display
 }
