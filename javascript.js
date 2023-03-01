@@ -39,14 +39,16 @@ equaled.addEventListener('click', equals);
 
 //Function declaration area
 
-//its okay
-
 let num1 = "";
 let num2 = "";
 let storage;
 
 function add() {
-    if (lastoperator == "subtract"){
+    if (lastoperator == "equals"){
+        lastoperator = "add";
+        return
+    }
+    else if (lastoperator == "subtract"){
         num2 = num2 - num1;
         readout.innerText = num2;
         display = newDisplay;
@@ -60,6 +62,16 @@ function add() {
         lastoperator = "add";
         return
     }
+    else if (lastoperator == "divide") {
+        if (num1 == 0) {
+            readout.innerText = "Impossible";
+            return}
+        num2 = num2 / num1;
+        readout.innerText = num2;
+        display = newDisplay;
+        lastoperator = "add";
+        return
+    }
     num2 = num1 + Number(num2);
     readout.innerText = num2;
     display = newDisplay;
@@ -67,8 +79,11 @@ function add() {
 }
 
 function subtract() {
-    
-    if (num2 == ""){
+    if (lastoperator == "equals"){
+        lastoperator = "subtract";
+        return
+    }
+    else if (num2 == ""){
         num2 = num1;
         readout.innerText = num2;
         display = newDisplay;
@@ -88,6 +103,16 @@ function subtract() {
         lastoperator = "subtract";
         return
     }
+    else if (lastoperator == "divide") {
+        if (num1 == 0) {
+            readout.innerText = "Impossible";
+            return}
+        num2 = num2 / num1;
+        readout.innerText = num2;
+        display = newDisplay;
+        lastoperator = "subtract";
+        return
+    }
     num2 = num2 - num1;
     readout.innerText = num2;
     display = newDisplay;
@@ -95,7 +120,11 @@ function subtract() {
 }
 
 function multiply() {
-    if (num2 == ""){
+    if (lastoperator == "equals"){
+        lastoperator = "multiply";
+        return
+    }
+    else if (num2 == ""){
         num2 = num1;
         readout.innerText = num1;
         display = newDisplay;
@@ -116,6 +145,16 @@ function multiply() {
         lastoperator = "multiply";
         return
     }
+    else if (lastoperator == "divide") {
+        if (num1 == 0) {
+            readout.innerText = "Impossible";
+            return}
+        num2 = num2 / num1;
+        readout.innerText = num2;
+        display = newDisplay;
+        lastoperator = "multiply";
+        return
+    }
     num2 = num2 * num1;
     readout.innerText = num2;
     display = newDisplay;
@@ -123,20 +162,77 @@ function multiply() {
 }
 
 function divide() {
-    if (num1 == 0) {
+    if (lastoperator == "equals"){
+        lastoperator = "subtract";
+        return
+    }
+    else if (num1 == 0) {
         readout.innerText = "Impossible";
         return}
-    if (num2 == ""){
+    else if (num2 == ""){
         num2 = num1;
         readout.innerText = num1;
         display = newDisplay;
         lastoperator = "divide";
         return
     } 
+    else if (lastoperator == "add"){
+        num2 = num1 + num2;
+        readout.innerText = num2;
+        display = newDisplay;
+        lastoperator = "divide";
+        return
+    } 
+    else if (lastoperator == "subtract") {
+        num2 = num2 - num1;
+        readout.innerText = num2;
+        display = newDisplay;
+        lastoperator = "divide";
+        return
+    }
+    else if (lastoperator == "multiply"){
+        num2 = num2 * num1;
+        readout.innerText = num2;
+        display = newDisplay;
+        lastoperator = "divide";
+        return
+    }
    num2 = num2 / num1;
    readout.innerText = num2;
    display = newDisplay;
    lastoperator = "divide";
+}
+
+function equals() {
+    if (lastoperator == "add"){
+        num2 = num1 + Number(num2);
+        readout.innerText = num2;
+        display = newDisplay;
+        lastoperator = "equals";}
+    else if (lastoperator == "subtract"){
+        num2 = num2 - num1;
+        readout.innerText = num2;
+        display = newDisplay;
+        num1 = 0;
+        lastoperator = "equals";
+        return
+    }
+    else if (lastoperator == "multiply"){
+        num2 = num2 * num1;
+        readout.innerText = num2;
+        display = newDisplay;
+        lastoperator = "equals";
+        return
+    }
+    else if (lastoperator == "divide") {
+         
+            
+        num2 = num2 / num1;
+        readout.innerText = num2;
+        display = newDisplay;
+        lastoperator = "equals";
+        return
+    }
 }
 
 function displayValueZero() {
