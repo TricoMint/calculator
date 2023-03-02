@@ -36,6 +36,8 @@ const divided = document.getElementById("divide");
 divided.addEventListener('click', divide);
 const equaled = document.getElementById("equals");
 equaled.addEventListener('click', equals);
+const cleared = document.getElementById("clear");
+cleared.addEventListener('click', clear);
 
 //Function declaration area
 
@@ -50,6 +52,7 @@ function add() {
     }
     else if (lastoperator == "subtract"){
         num2 = num2 - num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "add";
@@ -57,6 +60,7 @@ function add() {
     }
     else if (lastoperator == "multiply"){
         num2 = num2 * num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "add";
@@ -67,12 +71,14 @@ function add() {
             readout.innerText = "Impossible";
             return}
         num2 = num2 / num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "add";
         return
     }
     num2 = num1 + Number(num2);
+    rounded();
     readout.innerText = num2;
     display = newDisplay;
     lastoperator = "add";
@@ -85,12 +91,14 @@ function subtract() {
     }
     else if (num2 == ""){
         num2 = num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "subtract";
         return} 
     else if (lastoperator == "add"){
         num2 = num1 + num2;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "subtract";
@@ -98,6 +106,7 @@ function subtract() {
     } 
     else if (lastoperator == "multiply"){
         num2 = num2 * num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "subtract";
@@ -108,12 +117,14 @@ function subtract() {
             readout.innerText = "Impossible";
             return}
         num2 = num2 / num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "subtract";
         return
     }
     num2 = num2 - num1;
+    rounded();
     readout.innerText = num2;
     display = newDisplay;
     lastoperator = "subtract";
@@ -133,6 +144,7 @@ function multiply() {
     }
     else if (lastoperator == "add"){
         num2 = num1 + num2;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "multiply";
@@ -140,6 +152,7 @@ function multiply() {
     }
     else if (lastoperator == "subtract") {
         num2 = num2 - num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "multiply";
@@ -150,12 +163,14 @@ function multiply() {
             readout.innerText = "Impossible";
             return}
         num2 = num2 / num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "multiply";
         return
     }
     num2 = num2 * num1;
+    rounded();
     readout.innerText = num2;
     display = newDisplay;
     lastoperator = "multiply";
@@ -163,7 +178,7 @@ function multiply() {
 
 function divide() {
     if (lastoperator == "equals"){
-        lastoperator = "subtract";
+        lastoperator = "divide";
         return
     }
     else if (num1 == 0) {
@@ -171,6 +186,7 @@ function divide() {
         return}
     else if (num2 == ""){
         num2 = num1;
+        rounded();
         readout.innerText = num1;
         display = newDisplay;
         lastoperator = "divide";
@@ -178,6 +194,7 @@ function divide() {
     } 
     else if (lastoperator == "add"){
         num2 = num1 + num2;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "divide";
@@ -185,6 +202,7 @@ function divide() {
     } 
     else if (lastoperator == "subtract") {
         num2 = num2 - num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "divide";
@@ -192,12 +210,14 @@ function divide() {
     }
     else if (lastoperator == "multiply"){
         num2 = num2 * num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "divide";
         return
     }
    num2 = num2 / num1;
+   rounded();
    readout.innerText = num2;
    display = newDisplay;
    lastoperator = "divide";
@@ -206,11 +226,13 @@ function divide() {
 function equals() {
     if (lastoperator == "add"){
         num2 = num1 + Number(num2);
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "equals";}
     else if (lastoperator == "subtract"){
         num2 = num2 - num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         num1 = 0;
@@ -219,6 +241,7 @@ function equals() {
     }
     else if (lastoperator == "multiply"){
         num2 = num2 * num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "equals";
@@ -228,6 +251,7 @@ function equals() {
          
             
         num2 = num2 / num1;
+        rounded();
         readout.innerText = num2;
         display = newDisplay;
         lastoperator = "equals";
@@ -235,64 +259,105 @@ function equals() {
     }
 }
 
+function clear() {
+    let display = "";
+    let newDisplay = "";
+    let lastoperator = "none";
+    readout.innerText = "";
+}
+
+function rounded(){
+    num2 = num2 + "";
+    num2 = num2.substring(0, 15);
+    num2 = Number(num2);
+}
+
 function displayValueZero() {
     if (display == "0") {return}
+    else if (display.length >= 15) {return};
     display = display + 0;
     num1 = Number(display);
     readout.innerText = display;
 }
 
 function displayValueOne() {
-    if (display == "0") {display = ""};
+    if (display == "0") {display = ""}
+    else if (display.length >= 15) {return};
     display = display + 1;
     num1 = Number(display);
     readout.innerText = display;
 }
 
 function displayValueTwo() {
+    if (display == "0") {display = ""}
+    else if (display.length >= 15) {return};
     display = display + 2;
     num1 = Number(display);
     readout.innerText = display;
 }
 
 function displayValueThree() {
+    if (display == "0") {display = ""}
+    else if (display.length >= 15) {return};
     display = display + 3;
     num1 = Number(display);
     readout.innerText = display;
 }
 
 function displayValueFour() {
+    if (display == "0") {display = ""}
+    else if (display.length >= 15) {return};
     display = display + 4;
     num1 = Number(display);
     readout.innerText = display;
 }
 
 function displayValueFive() {
+    if (display == "0") {display = ""}
+    else if (display.length >= 15) {return};
     display = display + 5;
     num1 = Number(display);
     readout.innerText = display;
 }
 
 function displayValueSix() {
+    if (display == "0") {display = ""}
+    else if (display.length >= 15) {return};
     display = display + 6;
     num1 = Number(display);
     readout.innerText = display;
 }
 
 function displayValueSeven() {
+    if (display == "0") {display = ""}
+    else if (display.length >= 15) {return};
     display = display + 7;
     num1 = Number(display);
     readout.innerText = display;
 }
 
 function displayValueEight() {
+    if (display == "0") {display = ""}
+    else if (display.length >= 15) {return};
     display = display + 8;
     num1 = Number(display);
     readout.innerText = display;
 }
 
 function displayValueNine() {
+    if (display == "0") {display = ""}
+    else if (display.length >= 15) {return};
     display = display + 9;
     num1 = Number(display);
     readout.innerText = display;
 }
+
+/* Things to improve:
+- More accurate (floating point) rounding
+- Fixing interaction with starting out with a 0 so that it
+doesn't require an initial number input to work with 
+different operators
+- Adding a delete/backspace button
+- Cleanup/make more efficient
+- Identify other bugs that may be present
+*/ 
