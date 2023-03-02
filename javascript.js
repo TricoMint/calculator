@@ -43,7 +43,6 @@ cleared.addEventListener('click', clear);
 
 let num1 = "";
 let num2 = "";
-let storage;
 
 function add() {
     if (lastoperator == "equals"){
@@ -260,9 +259,10 @@ function equals() {
 }
 
 function clear() {
-    let display = "";
-    let newDisplay = "";
-    let lastoperator = "none";
+    display = "";
+    num1 = "";
+    num2 = "";
+    lastoperator = "none";
     readout.innerText = "";
 }
 
